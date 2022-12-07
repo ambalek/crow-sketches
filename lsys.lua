@@ -1,5 +1,6 @@
 -- L System Note Generator
 -- luacheck: globals init metro output justvolts pulse
+-- ❓ A quick and dirty L-System note generator attempt
 
 local rules = {
   A = { "C", "F", "G" },
@@ -55,6 +56,7 @@ local function play_token(token)
     if token ~= last_token then
       print("play_token: " .. token)
       output[1].volts = token_to_volts(token)
+      -- I tune 1v to whatever scale I want, for example C
       -- output[1].volts = 1.0
       output[2](pulse(2.0))
     end
